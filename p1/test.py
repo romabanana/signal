@@ -1,11 +1,12 @@
 import numpy as np
 import time
+from numpy._core.function_base import linspace
 from rich.console import Console
 
 console = Console()
 
-WIDTH = 80
-HEIGHT = 24
+WIDTH = console.size.width 
+HEIGHT = console.size.height - 2
 
 def render_wave(y):
     canvas = [[" " for _ in range(WIDTH)] for _ in range(HEIGHT)]
@@ -18,12 +19,13 @@ def render_wave(y):
     return "\n".join("".join(row) for row in canvas)
 
 x = np.linspace(0, 1, WIDTH)
+phis = linspace(0,12*np.pi,100)
+for phi in phis:
+    #y = np.random.uniform(0.25, 0.6) * np.sin((np.random.uniform(1, 4) *  2 * np.pi * x) + phi)
 
-for fs in range(1, 40):
-    y = np.sin(2 * np.pi * fs * x)
-
-    console.clear()
+    y = np.sin(( 2 * np.pi * x) + phi)
+    #console.clear()
     console.print(render_wave(y))
-    console.print(f"Frequency: {fs} Hz")
+    #console.print(f"Frequency: {1} Hz")
 
-    time.sleep(0.5)
+    time.sleep(1.1)
