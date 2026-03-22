@@ -1,20 +1,20 @@
 
-fm = 20; # Frecuencia de muestreo
+fm = 500; # Frecuencia de muestreo
 tm = 1/fm;
 ti = -1; # Ti
 tf = 1; # Tf
 #ti:tm:tf-tm; # Hasta tf-tm para obtener n muestras de acuerdo a la frecuencia
 
-fs = 1; # Frecuencia de la senoidal [fs e R].
+fs = 2; # Frecuencia de la senoidal [fs e R].
 phi = 0; # Fase de la senoidal [phi e (-pi, pi)]
 
 
-[x, y] = gen_sinc(ti ,tf ,fm ,fs ,phi);
+[t, y] = gen_cuad(ti ,tf ,fm ,fs ,phi);
 figure(1);
 hold on;
 #plot(t,y);
 
-stem(x,y);
+comet(t,y);
 #comet
 #stem(t,y);
 #hold on;
@@ -22,5 +22,5 @@ stem(x,y);
  # y = senoidal(fs, t, phi);
   #stem(t,y);
   #pause(0.15);  % seconds to wait
-  
+
 #end
