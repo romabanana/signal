@@ -21,11 +21,11 @@ def render_wave(y):
 x = np.linspace(0, 1, WIDTH)
 phis = linspace(0,12*np.pi,100)
 for phi in phis:
-    #y = np.random.uniform(0.25, 0.6) * np.sin((np.random.uniform(1, 4) *  2 * np.pi * x) + phi)
+    y = np.random.uniform(0.25, 0.6) * np.sin((np.random.uniform(1, 4) *  2 * np.pi * x) + phi)
 
-    y = np.sin(( 2 * np.pi * x) + phi)
+    #y = np.sin(( 2 * np.pi * x) + phi)
     #console.clear()
     console.print(render_wave(y))
     #console.print(f"Frequency: {1} Hz")
 
-    time.sleep(1.1)
+    time.sleep(0.1)

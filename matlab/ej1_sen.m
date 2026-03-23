@@ -23,10 +23,11 @@ axis([0 1 -1 1]);
 for fs = 1:1:50
   [t, y] = gen_sen(ti, tf, fm, fs, phi);
 
-  set(h1, "ydata", y);
   set(h2, "ydata", y);
 
+
   title(sprintf("Senoidal de frecuencia: %d Hz muestreada a 100hz", fs));
-  pause(0.3)
+  pause(1)
   drawnow;
+
 endfor

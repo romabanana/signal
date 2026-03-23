@@ -3,6 +3,9 @@ import numpy as np
 # gen_sen: genera senoidal. 
 
 def gen_sen(ti, tf, fm, fs, phi):
+    if tf <= ti:
+       raise ValueError("tf < ti!!")
+
     delta_t = tf-ti # muestras por segundo
     t = np.linspace(ti, tf, delta_t*fm)
     x = (2*np.pi*fs*t) + phi #2*pi*fs*t + phi
@@ -10,6 +13,9 @@ def gen_sen(ti, tf, fm, fs, phi):
     return t, y
 
 def gen_sinc(ti, tf, fm, fs, phi):
+    if tf <= ti:
+       raise ValueError("tf < ti!!")
+
     delta_t = tf-ti # muestras por segundo
     t = np.linspace(ti, tf, delta_t*fm)
     x = (2*np.pi*fs*t) + phi #2*pi*fs*t + phi
@@ -17,6 +23,9 @@ def gen_sinc(ti, tf, fm, fs, phi):
     return t, y
 
 def gen_cuad(ti, tf, fm, fs, phi):
+    if tf <= ti:
+        raise ValueError("tf < ti!!")
+
     delta_t = tf-ti # muestras por segundo
     t = np.linspace(ti, tf, delta_t*fm)
     x = (2*np.pi*fs*t) + phi #2*pi*fs*t + phi
