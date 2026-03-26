@@ -13,7 +13,7 @@ grid on;
 hold on;
 axis([0 2 -1 1]);
 title(["Interpolador" num2str(fm) "Hz"]);
-[t4, interpolada] = sobremuestrear(y, ti, tf, fm, 4, @sinc_aux3);
+[t4, interpolada] = sobremuestrear(y, ti, tf, fm, 4, @escalon);
 size(interpolada)
 size(t4)
 stem(t4,interpolada);
