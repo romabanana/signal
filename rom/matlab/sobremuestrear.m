@@ -2,7 +2,7 @@ function [mt, y] = sobremuestrear(original, ti, tf, fm, m, interpolador)
 
   n = length(original);
   tm = 1/fm;
-  nt = ti:tm:tf-tm; ##
+  nt = ti:tm:tf-tm;
 
   T4 = tm/m;
   mt = ti:T4:tf-T4;
