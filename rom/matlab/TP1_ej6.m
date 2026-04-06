@@ -25,7 +25,8 @@ title(["Interpolador" num2str(fm) "Hz"]);
 
 grid on;
 hold on;
-[t4, interpolada] = sobremuestrear(y, ti, tf, fm, 4, @escalon2);
+##interpoladores que andan: escalon2, lineal2, sinc_aux3
+[t4, interpolada] = sobremuestrear(y, ti, tf, fm, 4, @sinc_aux3);
 size(interpolada)
 size(t4)
 stem(t4,interpolada);

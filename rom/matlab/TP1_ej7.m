@@ -1,27 +1,32 @@
-ti = 0;
-tf = 1;
-fm = 10;
+% ------------------------------------------------------%
+% Ver TP1_ej7_r para caso de realizacion
+% Ver TP1_ej7_fm para caso de frecuencia de muestreo
+%-------------------------------------------------------%
 
-
-media_de_medias = zeros(6,1);
-media_de_varianzas = zeros(6,1);
-r = [5 10 50 100 150 200 300 400];
-
-for j = 1:length(r)
-  medias = zeros(length(t),1);
-  varianzas = zeros(length(t),1);
-  [t, y] = gen_aleatoria(ti, tf, fm, r(j));
-  for i = 1:length(t)
-      columna = y(i,:);
-      medias(i) = media(columna);
-      varianzas(i) = var(columna);
-  endfor
-  media_de_medias(j) = media(medias)
-  media_de_varianzas(j) = media(varianzas)
-
-endfor
-grid on;
-hold on;
-plot(1:length(r),media_de_medias);
-plot(1:length(r),media_de_varianzas);
+##ti = 0;
+##tf = 1;
+##fm = 10;
+##
+##
+##media_de_medias = zeros(6,1);
+##media_de_varianzas = zeros(6,1);
+##r = [5 10 50 100 150 200 300 400];
+##
+##for j = 1:length(r)
+##  medias = zeros(length(t),1);
+##  varianzas = zeros(length(t),1);
+##  [t, y] = gen_aleatoria(ti, tf, fm, r(j));
+##  for i = 1:length(t)
+##      columna = y(i,:);
+##      medias(i) = media(columna);
+##      varianzas(i) = var(columna);
+##  endfor
+##  media_de_medias(j) = media(medias)
+##  media_de_varianzas(j) = media(varianzas)
+##
+##endfor
+##grid on;
+##hold on;
+##plot(1:length(r),media_de_medias);
+##plot(1:length(r),media_de_varianzas);
 
