@@ -14,20 +14,20 @@ def sinc_interp(x, t, ti, fs):
 
     for i in range(len(ti)):
         suma = 0
-        for n in range(len(t)):
+        for n in range(len(t)): #loop sobre muestras originales
             mT, nT, T = ti[i], t[n], t[1] - t[0]
             tau = (mT - nT) / T
             
-            arg = 2 * np.pi * fs * tau
+            arg = 2 * np.pi * fs * tau  #argumento de la sinc
 
             if arg == 0:
                 valor = 1
             else:
                 valor = np.sin(arg) / arg
 
-            suma += x[n] * valor
+            suma += x[n] * valor #suma de contribuciones = x(n) * I(tau)
         
-        xi[i] = suma
+        xi[i] = suma # xi(ti) = sumatoria de x(n) * I(tau) para cada n
 
     return xi
 

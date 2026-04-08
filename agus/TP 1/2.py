@@ -36,7 +36,7 @@ def cu_senoidal(tini, tfin, fm, fs, fase):
 
 plt.rcParams['axes.grid'] = True
 
-t, x = inv_senoidal(0, 1, 100, 5, 0)
+t, x = inv_senoidal(-1, 1, 100, 2, 0)
 plt.stem(t, x)
 plt.show()
 
