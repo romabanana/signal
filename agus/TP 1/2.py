@@ -5,9 +5,9 @@ def inv_senoidal(tini, tfin, fm, fs, fase):
 
     T = 1 / fm
     t = np.arange(tini, tfin, T)
-    x = np.sin(2 * np.pi * fs * (-t) + fase)#x_nuevo(t) = x(-t)
- 
-    return t, x #devuelve la señal invertida
+    x = np.sin(2 * np.pi * fs * (t) + fase) #x_nuevo(t) = x(-t) ??
+
+    return -t, x[::-1] #devuelve la señal invertida
 
 def rec_senoidal(tini, tfin, fm, fs, fase):
 
