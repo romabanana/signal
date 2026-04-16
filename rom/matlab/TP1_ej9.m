@@ -14,7 +14,7 @@ N  = 16;
 y = A*y; % multiplica por la amplitud
 
 % Cuantización
-y_modificada = cuantizar(rectificar(y), N, A/(N-1), @round);
+y_modificada = cuantizar(rectificar(y), N, A/(N-1), @floor);
 
 % Ploteo
 plot_type = 0; % 0 -> subplot; 1 -> overlay;
