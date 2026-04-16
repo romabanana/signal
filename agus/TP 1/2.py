@@ -5,9 +5,9 @@ def inv_senoidal(tini, tfin, fm, fs, fase):
 
     T = 1 / fm
     t = np.arange(tini, tfin, T)
-    x = np.sin(2 * np.pi * fs * t + fase)
+    x = np.sin(2 * np.pi * fs * (-t) + fase) #x_nuevo(t) = x(-t) ??
 
-    return -t, x[::-1] #devuelve la señal invertida
+    return t, x #devuelve la señal invertida
 
 def rec_senoidal(tini, tfin, fm, fs, fase):
 
@@ -25,7 +25,7 @@ def cu_senoidal(tini, tfin, fm, fs, fase):
     x = np.sin(2 * np.pi * fs * t + fase)
 
     N = 8 #número de niveles
-    H = (np.max(x)-np.min(x)) / N #magnitud del cuanto basada en el rango de la señal
+    H = (np.max(x)-np.min(x)) / (N-1) #magnitud del cuanto basada en el rango de la señal
 
     x_alter = x - np.min(x) #desplaza la señal para que el mínimo sea 0
     x_cu = np.where(x_alter >= (N-1)*H, (N-1)*H, np.round(x_alter / H) * H) #cuantiza la señal
@@ -36,7 +36,7 @@ def cu_senoidal(tini, tfin, fm, fs, fase):
 
 plt.rcParams['axes.grid'] = True
 
-t, x = inv_senoidal(0, 1, 100, 5, 0)
+t, x = inv_senoidal(-1, 1, 100, 2, 0)
 plt.stem(t, x)
 plt.show()
 

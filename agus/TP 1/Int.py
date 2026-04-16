@@ -11,7 +11,7 @@ def senoidal(tini, tfin, fm, fs, fase=0, A=1):
 
 def cuantizar(x, N=8):
     #N = número de niveles
-    H = (np.max(x)-np.min(x)) / N #magnitud del cuanto basada en el rango de la señal
+    H = (np.max(x)-np.min(x)) / (N-1) #magnitud del cuanto basada en el rango de la señal
 
     x_alter = x - np.min(x) #desplaza la señal para que el mínimo sea 0
     x_cu = np.where(x_alter >= (N-1)*H, (N-1)*H, np.round(x_alter / H) * H) #cuantiza la señal
@@ -41,7 +41,7 @@ plt.grid(True)
 plt.legend()
 
 plt.subplot(1, 2, 2)
-plt.stem(t, x_cu, 'r-', label='Señal cuantizada x_cu')
+plt.stem(t, x_cu, 'r-', label='Señal cuantizada x_cu') #no se observan todos los niveles de cuantizacion debido a que se usan valores de la señal rectificada
 plt.title('Stem de x_cu')
 plt.xlabel('t')
 plt.ylabel('x_cu')
@@ -51,12 +51,14 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 
-#Disminuyo ligeramente la amplitud en la señal cuantizada por cuestiones de redondeo o precision
+#La amplitud máxima se conserva porque el cuantizador uniforme se definió de manera que los niveles incluyan los valores extremos de la señal, al utilizar 
+#N−1 intervalos para cubrir completamente el rango
+#Sin embargo, puede ocurrir que la amplitud disminuya ligeramente la amplitud en la señal cuantizada porque los valores de la señal se aproximan al nivel discreto mas cercano
 
 #///////PARTE 2///////#
 def gen_random(fm, var=1):
     sigma = np.sqrt(var)  # Desviación estándar
-    x = sigma * np.random.randn(fm)
+    x = sigma * np.random.randn(fm) # Varianza ajustable por la desviación estándar
     return x
 
 def potency(x):
@@ -142,10 +144,11 @@ print(f"Potencia del ruido amplificado 2: {Prk2:.4f}")
 print(f"Relación señal a ruido con ruido amplificado 2 (SNR_k2): {SNRk2:.2f} dB")
 
 #/////////PARTE 3///////#
-# Al disminuir los niveles de cuatizacion, baja la fiabilidad porque hay menos escalones que representen a la señal,
-# ademas la amplitud disminuye incluso mas
+# Al disminuir los niveles de cuatizacion, baja la fiabilidad porque hay menos escalones que representen a la señal
+# y aumenta el error de cuantizacion al aproximar el valor de señal al nivel discreto mas cercano
 
-# Con menor frecuencia de muestreo, otra vez se pierde informacion, la señal se vuelve mas escalonada y discreta, al punto
-# en el que se puede perder la amplitud maxima
+# Con menor frecuencia de muestreo, otra vez se pierde informacion debido a la menor cantidad de muestras,
+# y puede provocar aliasing si ocurre que fm < 2*fs, lo que hace que la señal muestreada no represente correctamente a la señal original
 
-# Para obtener una SNR de 0 db, se aplica la formula como se vio en el ejercicio 8 
+# Para obtener una SNR de 0 db, se aplica la formula como se vio en el ejercicio 8
+# Se despeja tal que Log(Ps / Par) = 0, entonces Ps = Par, que lleva a Par = k^2 * Pr, entonces k = sqrt(Ps / Pr) para amplificar el ruido y obtener SNR = 0 dB

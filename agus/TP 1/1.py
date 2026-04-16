@@ -32,13 +32,22 @@ def cuad(tini, tfin, fm, fs, fase):
 plt.rcParams['axes.grid'] = True
 
 t, x = senoidal(0, 1, 100, 5, 0)
+#t, x = senoidal(0, 1, 100, 10, 0)
+#t, x = senoidal(0, 1, 100, 5, np.pi)
+#t, x = senoidal(0, 1, 100, 10, np.pi)
 plt.stem(t, x)
 plt.show()
 
-t, x = sync(-1, 1, 100, 5, 0)
+t, x = sync(0, 1, 100, 5, 0)
+#t, x = sync(0, 1, 100, 5, np.pi)
+#t, x = sync(0, 1, 100, 5, 0)
+#t, x = sync(0, 1, 100, 10, np.pi)
 plt.stem(t, x)
 plt.show()
 
 t, x = cuad(0, 1, 100, 5, 0)
+#t, x = cuad(0, 1, 100, 5, np.pi)
+#t, x = cuad(0, 1, 100, 5, 0)
+#t, x = cuad(0, 1, 100, 10, np.pi)
 plt.stem(t, x)
 plt.show()

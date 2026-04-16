@@ -51,9 +51,9 @@ snr(db) = 10 * log(Ps / Par) -> Da 0 si log 1, entonces Ps = Par
 |
 |
 V
-Par = 1/N * E (a*r)^2 -> r es el ruido, a es el factor de amplificación. E es la sumatoria, Par es la potencia del ruido amplificado. N es el número de muestras.
+Par = 1/N * E (a*r)^2 -> r es el ruido original, a es el factor de amplificación. E es la sumatoria, Par es la potencia del ruido amplificado. N es el número de muestras.
 Par = 1/N * E (a)^2 * (r)^2 -> a es constante, entonces:
-Par = a^2 * (1/N * E r^2) = a^2 * Pr
+Par = a^2 * (1/N * E r^2) = a^2 * Pr -> siendo Pr la potencia del ruido original
 
 Ps = Par
 Ps = a^2 * Pr

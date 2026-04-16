@@ -26,9 +26,8 @@ for ax, fm in zip(axs.flatten(), fms):
 plt.tight_layout()
 plt.show()
 
-#En la frecuencia muestral de 100 Hz la cantidad de ciclos
+#En la frecuencia muestral de 100 Hz y 25 Hz, la cantidad de ciclos
 #corresponde a 5 Hz
-#En los casos de fm 4, 1 y 0.5 Hz la discrepancia puede ser
-#porque no se cumple la igualdad 2*fs <= fm
-#Para 10 y 25, se cumple la igualdad, pero la frecuencia de
-#muestreo no es suficiente para mostrar correctamente los 5 ciclos
+#En los casos de fm 10, 4, 1 y 0.5 Hz no se puede apreciar la cantidad de ciclos
+#debido a que la frecuencia de muestreo es insuficiente para representar la señal correctamente, lo que resulta en
+#perdida de informacion

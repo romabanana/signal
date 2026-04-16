@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-T = 0.001
+T = 1/800 #8 muestras en 0.01 segundos, 80 en 0.1 segundos, 800 en 1 segundo
 A = 3
-t_retardo = 0.005 # suponiendo que cada punto representa 0.001
+t_retardo = 5 / 800 #retardo de 5 muestras
 fs = 20 # se completan dos fases
 phi = -2 * np.pi * fs * t_retardo
 
