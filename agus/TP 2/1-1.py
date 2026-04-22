@@ -6,12 +6,14 @@ import matplotlib.pyplot as plt
 #y[n] = g[n] * x[n] -> g[n] = A*sin(w*n*T), con A constante, w = 2*pi*f y T periodo de muestreo
 #y[n] = A*sin( (2*pi*f) *n*T) * x[n]
 
+#Causal, la salida no depende de entradas futuras
+#Lineal, se cumple seperposicion y homogeneidad (a*y = a*x y y1+y2 = x1+x2)
+#Variante en el tiempo, el coeficiente g[n] varía con el tiempo
 #Sin memoria, no depende de entradas anteriores
 #No invertible, una misma salida puede ser generada por diferentes entradas
-#Causal, la salida no depende de entradas futuras
-#No estable? y tiende a infinito
-#Variante en el tiempo, el coeficiente g[n] varía con el tiempo
-#No lineal, la salida no es proporcional a la entrada
+#Estable, y = A * sin(algo) * x -> |y| <= A * x por |sin(algo)| <= 1
+
+
 
 x = np.arange(0, 100)  # Señal de entrada (puede ser cualquier señal discreta)
 A = 3
@@ -28,12 +30,13 @@ plt.show()
 #///////////////////2//////////////////////#
 #y[n] = sum(k=n-no, n+no) x[k]
 
-#Con memoria
-#Inverible, si se ignoran los ultimos valores
 #No causal
-#No estable, la salida crece al infinito
-#Invariante en el tiempo
 #Lineal
+#Invariante en el tiempo
+#Con memoria
+#No invertible, se calcula un promedio
+#Estable, |y| <= (2*no+1) * max(|x|)
+
 
 x = np.arange(0, 100)  # Señal de entrada (puede ser cualquier señal discreta)
 no = 2
@@ -55,12 +58,13 @@ plt.show()
 #///////////////////3//////////////////////#
 #y[n] = x[n] + 2
 
+#Causal
+#No lineal, porque y(0) =! 0
+#Invariante en el tiempo
 #Sin memoria
 #Invertible
-#Causal
-#No estable
-#Invariante en el tiempo
-#Lineal
+#Estable, |y| <= |x| + 2
+
 
 x = np.arange(0, 100)  # Señal de entrada (puede ser cualquier señal discreta)
 y = x + 2
@@ -74,12 +78,13 @@ plt.show()
 #///////////////////4//////////////////////#
 #y[n] = n * x[n]
 
-#Sin memoria
-#Invertible
 #Causal
-#No estable
-#Variante en el tiempo
 #Lineal
+#Variante en el tiempo
+#Sin memoria
+#Invertible para n =! 0
+#No estable, n puede crecer al infinito
+
 
 x = np.arange(0, 100)  # Señal de entrada (puede ser cualquier señal discreta)
 y = np.arange(len(x)) * x

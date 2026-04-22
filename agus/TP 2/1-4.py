@@ -19,7 +19,7 @@ for n in range(len(delta)):
     else:
         h[n] = delta[n]
 print("Respuesta al impulso del sistema 1:", h)
-#IIR
+#IIR, autorregresivo
 
 #////////////////////2//////////////////////#
 #y[n] = x[n] + 0.5*x[n-1]
@@ -31,7 +31,7 @@ for n in range(len(delta)):
     else:
         h[n] = delta[n]
 print("Respuesta al impulso del sistema 2:", h)
-#FIR
+#FIR, promedio movil (no hay retroalimentacion)
 
 
 #////////////////////3//////////////////////#
@@ -41,11 +41,11 @@ print("Respuesta al impulso del sistema 2:", h)
 h = np.zeros(len(delta))  # Respuesta al impulso del sistema
 for n in range(len(delta)):
     if n >= 2:
-        h[n] = delta[n] + 0.5 * delta[n-1] - 0.25 * delta[n-2]
+        h[n] = delta[n] + 0.5 * h[n-1] - 0.25 * h[n-2]
     else:
         h[n] = delta[n]
 print("Respuesta al impulso del sistema 3:", h)
-#FIR
+#IR, autorregresivo
 
 
 """""

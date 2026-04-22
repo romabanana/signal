@@ -9,6 +9,13 @@ def circle_convolve(x, h):
             y[k] += h[l] * x[(np.mod((N + k - l), N))]
     return y
 
+def convolve(x, h):
+    y = np.zeros((len(x) + len(h)) - 1)
+    for i in range(len(y)):
+        for j in range(len(x)):
+            if i - j >= 0 and i - j < len(h):
+                y[i] += x[j] * h[i - j]
+    return y
 
 N = 4
 a = 0.5
@@ -31,10 +38,11 @@ for n in range(N):
 #x = [1, -0.5, 0, 0]
 
 #y = np.zeros(N)
-w = circle_convolve(x, hA)
-y = circle_convolve(w, hB)
-print("y[n] = ", y)
+w = convolve(x, hA)
+y = convolve(w, hB)
+print("y[n] = ", y[:N])
 
-w = circle_convolve(x, hB)
-yr = circle_convolve(w, hA)
-print("y[n] reversa = ", yr)
+w = convolve(x, hB)
+yr = convolve(w, hA)
+print("y[n] reversa = ", yr[:N])
+print(np.allclose(y[:N], yr[:N]))

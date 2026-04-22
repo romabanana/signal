@@ -2,6 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #y[n] = sqrt(x[n]^2 - 2 * x[n-1]*x[n] + x[n-1]^2)
+#y[n] = |x[n] - x[n-1]|
+
+#Causal
+#No lineal, x[n] = a*x[n] -> y[n] = |a*x[n] - a*x[n-1]| = |a|*|x[n] - x[n-1]| != a*|x[n] - x[n-1]|
+#Invariante en el tiempo
+#Con memoria
 
 x = np.arange(0, 10)  # Señal de entrada (puede ser cualquier señal discreta)
 #x = np.array([0, 1, 2, 4, 8, 16, 32])  # Ejemplo de señal de entrada

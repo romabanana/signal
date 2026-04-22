@@ -30,7 +30,7 @@ plt.xlabel('n')
 plt.ylabel('h[n]')
 plt.show()
 
-#El sistema es estable porque tiende a 0
+#El sistema es estable porque tiende a 0, la sumatoria absoluta es finita
 
 
 #///////////////////Parte 3////////////////////////////#
@@ -43,13 +43,13 @@ for i in range(len(ya)):
         if i - j >= 0 and i - j < len(h):
             ya[i] += x[j] * h[i - j]
 
-H = np.zeros((L, L))
-yb = np.zeros(L)
-for i in range(L):
-    for j in range(i + 1):
+H = np.zeros((L + N - 1, L))
+yb = np.zeros(L + N - 1)
+for i in range(L + N - 1):
+    for j in range(L):
         if i - j >= 0 and i - j < len(h):
             H[i, j] = h[i - j]
-for i in range(len(x)):
+for i in range(len(yb)):
     yb[i] = np.dot(H[i, :], x) #no toma en cuenta el caso en el que i >= len(h)
 
 N_total = L + len(h) - 1
@@ -60,9 +60,10 @@ for k in range(N_total):
     for l in range(N_total):
         yc[k] += h_pad[l] * x_pad[(k - l) % N_total]
 
-print('\ny sumatoria: ', ya[:10])
-print('y matricial: ', yb)
-print('y circularr: ', yc[:10])
+print('\ny sumatoria: ', ya[:L])
+print('y matricial: ', yb[:L])
+print('y circularr: ', yc[:L])
+print('Son iguales? ', np.allclose(ya, yb) and np.allclose(ya, yc))
 #Las 3 son iguales
 
 
