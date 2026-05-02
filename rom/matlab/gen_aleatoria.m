@@ -5,4 +5,5 @@ function [t, y] = gen_aleatoria(tini, tfin, fm , r)
     n = length(t);
     y = randn(n, r);
 
+
 end
