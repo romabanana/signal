@@ -12,7 +12,7 @@ x = np.sum(y, axis=0)
 numerador = np.sum(x * y, axis=1)
 denominador = np.sqrt(np.sum(x**2) * np.sum(y**2, axis=1)) #Similitud cosenoidal
 parecido = numerador / denominador
-plt.plot(fs, parecido) #Todas tienen el mismo parecido, porque x es una suma de senoides casi ortogonales entre si, que contribuyen igualmente
+plt.bar(fs, parecido) #Todas tienen el mismo parecido, porque x es una suma de senoides casi ortogonales entre si, que contribuyen igualmente
 plt.xlabel('Frecuencia')
 plt.ylabel('Similitud cosenoidal')
 plt.grid()
@@ -20,16 +20,16 @@ plt.show()
 
 # 2
 y_fase = np.zeros((len(fs), len(t)))
-#phi = (np.arange(len(fs))+1) * np.pi / 10
-phi = np.random.rand(len(fs)) * np.pi / 10
+#phi = (np.arange(len(fs))+1) * np.pi / 2
+phi = np.random.rand(len(fs)) * np.pi / 2
 for i in range(len(fs)):
     y_fase[i] = np.sin(2 * np.pi * fs[i] * t + phi[i])
-x = np.sum(y_fase, axis=0)
+x_fase = np.sum(y_fase, axis=0)
 
-numerador = np.sum(x * y_fase, axis=1)
-denominador = np.sqrt(np.sum(x**2) * np.sum(y_fase**2, axis=1)) #Similitud cosenoidal
+numerador = np.sum(x_fase * y, axis=1)
+denominador = np.sqrt(np.sum(x_fase**2) * np.sum(y**2, axis=1)) #Similitud cosenoidal
 parecido = numerador / denominador
-plt.plot(fs, parecido) #Al variar la fase, las senoidales dejan de estar alineadas con x, entonces varia el parecido
+plt.bar(fs, parecido) #Al variar la fase, las senoidales dejan de estar alineadas con x, entonces varia el parecido
 plt.xlabel('Frecuencia')
 plt.ylabel('Similitud cosenoidal')
 plt.grid()
