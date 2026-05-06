@@ -32,8 +32,10 @@ print('Ángulo:', angulo)
 # 3
 phi1 = senoidal(0, 0.5, 1000, 100)
 phi2 = senoidal(0, 0.5, 1000, 200)
-parecido_phi1 = np.dot(x, phi1) / (np.sqrt(np.sum(x**2)) * np.sqrt(np.sum(phi1**2)))
-parecido_phi2 = np.dot(x, phi2) / (np.sqrt(np.sum(x**2)) * np.sqrt(np.sum(phi2**2)))
+#parecido_phi1 = np.dot(x, phi1) / (np.sqrt(np.sum(x**2)) * np.sqrt(np.sum(phi1**2)))
+parecido_phi1 = np.dot(x, phi1) / np.dot(phi1, phi1)
+#parecido_phi2 = np.dot(x, phi2) / (np.sqrt(np.sum(x**2)) * np.sqrt(np.sum(phi2**2)))
+parecido_phi2 = np.dot(x, phi2) / np.dot(phi2, phi2)
 
 x_aprox = parecido_phi1 * phi1 + parecido_phi2 * phi2
 error = np.sqrt(np.sum((x - x_aprox)**2))
