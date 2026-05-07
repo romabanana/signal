@@ -36,9 +36,12 @@ fs_2       = 200;
 [_, phi_1] = gen_sen(ti, tf, fm, fs, ph);
 [_, phi_2] = gen_sen(ti, tf, fm, fs_2, ph);
 
+phi_1      = phi_1 ./ (norm(phi_1)); %normañzo
+phi_2      = phi_2 ./ (norm(phi_2));
 
-alpha_1 = dot(x, phi_1) / (norm(phi_1)^2); % ~ 1
-alpha_2 = dot(x, phi_2) / (norm(phi_2)^2); % ~ 0
+
+alpha_1 = dot(x, phi_1); % ~ 1
+alpha_2 = dot(x, phi_2); % ~ 0
 
 x_aprox = alpha_1 * phi_1 + alpha_2 * phi_2;
 

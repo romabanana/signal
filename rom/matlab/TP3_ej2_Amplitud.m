@@ -8,7 +8,7 @@ A_1    = 1;
 fs_1   = 10;
 fase_1 = 0;
 
-[t, senoidal_1]  = gen_sen(ti, tf, fm, fs_1, fase_1);
+[t, senoidal_1]  = gen_sen(ti, tf, fm, fs_1, fase_1); %gen sens..
 senoidal_1       = senoidal_1 * A_1;
 
 
@@ -30,6 +30,8 @@ for i = 1:n
   productos(i)     = dot(senoidal_1, senoidal_2);
 endfor
 
-plot(Amplitudes, productos)
+hold on;
+plot(amplitudes, productos)
+plot(amplitudes, productos ./ amplitudes)
 
 

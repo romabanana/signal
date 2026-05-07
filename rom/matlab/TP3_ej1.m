@@ -32,7 +32,7 @@ for i = 1:n
   valores(1, i) = media(signals(i,:));          % valor medio
   valores(2, i) = max(signals(i,:));            % max
   valores(3, i) = min(signals(i,:));            % min
-  valores(4, i) = max(abs(signals(i,:)));       % Amplitud
+  valores(4, i) = norm(signals(i,:),inf);       % Amplitud
   valores(5, i) = normp(signals(i,:),2).^2;     % Energy
   valores(6, i) = normp(signals(i,:),1);        % action
   valores(7, i) = potencia(signals(i,:));       % potencia media
@@ -40,3 +40,4 @@ for i = 1:n
 endfor
 
 valores
+max(abs(signals(1,:)))
