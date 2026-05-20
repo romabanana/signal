@@ -55,6 +55,20 @@ plt.xlabel("Muestras")
 plt.ylabel("|x(k)|")
 plt.show() #como no se cumple la regla de fm > 2 * fs, no se ven una grafica de 105Hz, sino una de 5Hz
 
+s3 = (2/(2j)) * (
+    np.exp(1j * 2*np.pi * 105 * n/fm)
+    -
+    np.exp(-1j * 2*np.pi * 105 * n/fm)
+)
+
+s3 = np.real(s3)# Parte real (equivale al seno)
+S3 = fourier(s3)
+plt.stem(n, np.abs(S3))
+plt.title("Espectro de la señal con frecuencia 105Hz")
+plt.xlabel("Muestras")
+plt.ylabel("|x(k)|")
+plt.show() #para la señal de 105Hz, se observa una frecuencia de 5Hz, debido al aliasing, y por no cumplir el criterio de Nyquist, ya que 105 > 50
+
 #3
 A = 2
 s = A * np.sin(2*np.pi * 27 * t)
