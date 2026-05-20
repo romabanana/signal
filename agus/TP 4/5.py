@@ -34,22 +34,25 @@ plt.ylabel("Magnitud")
 plt.show() #no se cumple la regla de fm > 2 * fs, entonces se ve una señal de 23Hz
 
 #1
-s1 = 2 * np.sin(2*np.pi * 2 * t)
-S1 = fourier(s1)
-plt.stem(freq, np.abs(S1))
-plt.title("Espectro de la señal con frecuencia 2Hz")
-plt.xlabel("Frecuencia (Hz)")
-plt.ylabel("Magnitud")
-plt.show() #el grafico observado parece a uno de una senoidal de 2Hz,
-#la discrepancia con la original es que esta señal de 2Hz cumple con el criterio de Nyquist
+# Usando fk = k * fm / N, siendo fk la frecuencia observada, k el indice de la muestra, y N el numero de muestras
+# fk = 23 * 50 / 50 = 23Hz, que es la frecuencia que se observa en la grafica, y no los 27Hz originales, debido al aliasing
+# y por no cumplir el criterio de Nyquist
 
 #2
-s2 = 2 * np.sin(2*np.pi * 105 * t)
+# Señal usando Euler
+n = np.arange(len(t))
+s2 = (2/(2j)) * (
+    np.exp(1j * 2*np.pi * 27 * n/fm)
+    -
+    np.exp(-1j * 2*np.pi * 27 * n/fm)
+)
+
+s2 = np.real(s2)# Parte real (equivale al seno)
 S2 = fourier(s2)
-plt.stem(freq, np.abs(S2))
+plt.stem(n, np.abs(S2))
 plt.title("Espectro de la señal con frecuencia 105Hz")
-plt.xlabel("Frecuencia (Hz)")
-plt.ylabel("Magnitud")
+plt.xlabel("Muestras")
+plt.ylabel("|x(k)|")
 plt.show() #como no se cumple la regla de fm > 2 * fs, no se ven una grafica de 105Hz, sino una de 5Hz
 
 #3
