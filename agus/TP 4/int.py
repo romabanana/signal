@@ -52,7 +52,7 @@ plt.show() #solo se observa la frecuencia de 50Hz de las originales, porque esta
 #|200 - 120| = |280 - 200| = 80
 
 #Parte 2
-fm = 200
+fm = 1000
 t = np.arange(0, 0.04, 1/fm) #40ms
 s1 = 5 * np.sin(2*np.pi * 50 * t)
 s2 = 3 * np.sin(2*np.pi * 120 * t)
@@ -62,7 +62,7 @@ S = fourier(s)
 freq = frecuencias(fm, len(s))
 plt.stem(freq, np.abs(S))
 plt.title("Espectro de Frecuencias TDF en 40ms")
-plt.show() #Solo se distingue el pico de 50Hz, luego otros de 75, 25, 0 y 100Hz resultado de mala resolucion
+plt.show() #Solo se distingue el pico de 50Hz, luego otro en 124Hz y otro en 276Hz, pero no se distinguen claramente las frecuencias de 120Hz y 280Hz, debido a la baja resolucion espectral causada por el corto tiempo de observacion de la señal
 deltaFm = fm / len(s)
 print("Resolucion frecuencial con 40ms: ", deltaFm)
 
