@@ -24,7 +24,7 @@ figure(1);
 stemft(abs(S_n), t, fm);
 ##N       = length(s_n);
 ##delta_f = fm/ N
-##
+##211
 ### con fm = 200;
 ##fm = 200
 ##[t, aux_sen_1] = gen_sen(ti, tf, fm, f1, fase);

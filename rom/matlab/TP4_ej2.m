@@ -26,12 +26,12 @@ S_b = fft(s_b);
 S_c = fft(s_c);
 S_d = fft(s_d);
 
-##figure(1);
-##stemft(abs(S_a), t, fm);
-##figure(2);
-##stemft(abs(S_b), t, fm); # armonicos 6hz(1/3) 10hz(1/5) 14hz(1/7)...
-##figure(3);
-##stemft(abs(S_c), t, fm);
+figure(1);
+stemft(abs(S_a), t, fm);
+figure(2);
+stemft(abs(S_b), t, fm); # armonicos 6hz(1/3) 10hz(1/5) 14hz(1/7)...
+figure(3);
+stemft(abs(S_c), t, fm);
 N = length(t);
 
 ##dot_AB   = dot(S_a, conj(S_b)) / N
