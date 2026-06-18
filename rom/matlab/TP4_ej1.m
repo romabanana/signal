@@ -34,7 +34,7 @@ Es_2 = (1/N) * sum(S_t.^2);
 
 s_3a = s_t + 4;
 S_3a = abs(fft(s_3a));
-##stemft(S_3a, t, fm);
+stemft(S_3a, t, fm);
 
 # pico en 0hz ya que exp(0) = 1 entonces S_t(0) = sum(s_t),
 # notar la senoidal se cancela a si misma y prevalece el offset..

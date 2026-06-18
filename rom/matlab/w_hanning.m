@@ -14,28 +14,18 @@
 ## along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ## -*- texinfo -*-
-## @deftypefn {} {@var{retval} =} stemft (@var{input1}, @var{input2})
+## @deftypefn {} {@var{retval} =} w_rect (@var{input1}, @var{input2})
 ##
 ## @seealso{}
 ## @end deftypefn
 
 ## Author:  <romy@khan>
-## Created: 2026-05-17
+## Created: 2026-06-17
 
-# S = abs(fft(...))
-# stem desde -fm/2 hasta fm/2 - df (fm muestras)
+function w = w_hanning(N)
+  w = zeros(1, N);
 
-function stemft (S, t, fm)
-  df    = fm / length(t);
-  k     = -fm/2: df: (fm/2 - df);
-  mitad = ceil((length(S)/2));
-##  length(k)
-##  length([S(mitad+1:end), S(1:mitad)])
-##  length(S)
-  stem(k, [S(mitad+1:end), S(1:mitad)] );
-  xlabel('Frecuencia (Hz)');
-  ylabel('|S|');
-  title('DTFT');
-  grid on;
-
+  for n = 0:N-1
+    w(n+1) = 0.5 * (1 - cos(2*pi*n/(N-1)));
+  endfor
 endfunction

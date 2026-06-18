@@ -7,14 +7,14 @@ cant_muestras = 20;
 x = zeros(1, cant_muestras);
 x(1) = 1; % delta[0] = 1
 
-h_manual = zeros(1, cant_muestras);
+h = zeros(1, cant_muestras);
 
 % Resolvemos la ecuación en diferencias muestra por muestra: h[n] = h[n-2] + x[n]
 % Empezamos en n=3 para evitar índices negativos o fuera de rango en Octave (que arranca en 1)
-h_manual(1) = x(1); % n = 0 -> h[0] = 0 + x[0] = 1
-h_manual(2) = x(2); % n = 1 -> h[1] = 0 + x[1] = 0
+h(1) = x(1); % n = 0 -> h[0] = 0 + x[0] = 1
+h(2) = x(2); % n = 1 -> h[1] = 0 + x[1] = 0
 
 for n = 3:cant_muestras
-    h_manual(n) = h_manual(n-2) + x(n);
+    h(n) = h(n-2) + x(n);
 end
-plot(h_manual)
+stem(h)
